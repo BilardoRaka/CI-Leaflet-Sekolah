@@ -65,6 +65,51 @@ class Sekolah extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255'
             ],
+            'akreditasi' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null' => TRUE
+            ],
+            'guru' => [
+                'type' => 'INT',
+                'constraint' => '255',
+                'null' => TRUE
+            ],
+            'siswa_laki' => [
+                'type' => 'INT',
+                'constraint' => '255',
+                'null' => TRUE
+            ],
+            'siswa_perempuan' => [
+                'type' => 'INT',
+                'constraint' => '255',
+                'null' => TRUE
+            ],
+            'kurikulum' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null' => TRUE
+            ],
+            'penyelenggaraan' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+                'null' => TRUE
+            ],
+            'ruang_kelas' => [
+                'type' => 'INT',
+                'constraint' => '255',
+                'null' => TRUE
+            ],
+            'laboratorium' => [
+                'type' => 'INT',
+                'constraint' => '255',
+                'null' => TRUE
+            ],
+            'perpustakaan' => [
+                'type' => 'INT',
+                'constraint' => '255',
+                'null' => TRUE
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => TRUE

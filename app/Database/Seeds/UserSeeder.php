@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         // Using Query Builder
         $this->db->table('user')->insert($admin);
 
-        for ($i = 0; $i < 98; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $data = [
                 'username' => $faker->userName,
                 'password' => password_hash('password', PASSWORD_BCRYPT),

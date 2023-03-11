@@ -45,9 +45,9 @@
             </p>
             <p style="text-align:right">
                 <br><br>
-                Harap hubungi admin setelah selesai registrasi sekolah untuk diterima.
-                <br><br>
-                <i class="bi bi-whatsapp"></i> +6262626262626
+                CP Admin :
+                <br>
+                <i class="bi bi-whatsapp"></i> +6283824396766
             </p>
         </div>
     </div>
