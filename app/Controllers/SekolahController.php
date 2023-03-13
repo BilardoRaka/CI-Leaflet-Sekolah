@@ -170,6 +170,66 @@ class SekolahController extends BaseController
                     'required' => 'Nomor telepon sekolah harus diisi.'
                 ],
             ],
+            'guru' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jumlah guru harus diisi.'
+                ],
+            ],
+            'siswa_laki' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jumlah siswa laki-laki harus diisi.'
+                ],
+            ],
+            'siswa_perempuan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jumlah siswa perempuan harus diisi.'
+                ],
+            ],
+            'siswa_perempuan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jumlah siswa perempuan harus diisi.'
+                ],
+            ],
+            'akreditasi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Akreditasi sekolah harus diisi.'
+                ],
+            ],
+            'kurikulum' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kurikulum sekolah harus diisi.'
+                ],
+            ],
+            'penyelenggaraan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Penyelenggaraan sekolah harus diisi.'
+                ],
+            ],
+            'ruang_kelas' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jumlah ruang kelas sekolah harus diisi.'
+                ],
+            ],
+            'laboratorium' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jumlah laboratorium sekolah harus diisi.'
+                ],
+            ],
+            'perpustakaan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jumlah perpustakaan sekolah harus diisi.'
+                ],
+            ],
             'gambar' => [
                 'rules' => 'max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/jpeg,image/jpg,image/png]',
                 'errors' => [
@@ -198,6 +258,15 @@ class SekolahController extends BaseController
             'status' => $this->request->getVar('status'),
             'latitude' => $this->request->getVar('latitude'),
             'longitude' => $this->request->getVar('longitude'),
+            'akreditasi' => $this->request->getVar('akreditasi'),
+            'kurikulum' => $this->request->getVar('kurikulum'),
+            'penyelenggaraan' => $this->request->getVar('penyelenggaraan'),
+            'guru' => $this->request->getVar('guru'),
+            'siswa_laki' => $this->request->getVar('siswa_laki'),
+            'siswa_perempuan' => $this->request->getVar('siswa_perempuan'),
+            'ruang_kelas' => $this->request->getVar('ruang_kelas'),
+            'laboratorium' => $this->request->getVar('laboratorium'),
+            'perpustakaan' => $this->request->getVar('perpustakaan'),
         ]);
 
         $files = $this->request->getFileMultiple('gambar');

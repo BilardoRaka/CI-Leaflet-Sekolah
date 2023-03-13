@@ -27,9 +27,10 @@ class Home extends BaseController
 
     public function map()
     {
+        $sekolah = $this->SekolahModel->findAll();
         $data = [
             'title' => 'Pemetaan',
-            'sekolah' => $this->SekolahModel->findAll()
+            'sekolah' => $sekolah
         ];
 
         return view('map', $data);

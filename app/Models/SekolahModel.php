@@ -12,7 +12,7 @@ class SekolahModel extends Model
     
     protected $useAutoIncrement = false;
 
-    protected $allowedFields = ['id','user_id', 'nama', 'slug', 'kecamatan', 'alamat', 'kepsek', 'email', 'nohp', 'status', 'latitude', 'longitude','isvalid'];
+    protected $allowedFields = ['id','user_id', 'nama', 'slug', 'kecamatan', 'alamat', 'kepsek', 'email', 'nohp', 'status', 'latitude', 'longitude','isvalid', 'akreditasi', 'kurikulum', 'penyelenggaraan', 'guru', 'siswa_laki', 'siswa_perempuan', 'ruang_kelas', 'laboratorium', 'perpustakaan'];
 
     public function getSekolah($slug = false)
     {
