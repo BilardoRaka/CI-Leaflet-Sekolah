@@ -92,7 +92,7 @@ northEast = L.latLng(-7.206124262731635, 108.7958942);
         'Carto DB': CartoDB_DarkMatter,
         'Stadia': Stadia_OSMBright
     }
-
+    
     var overlayMap = {
         'Marker': layerGroup,
     }
