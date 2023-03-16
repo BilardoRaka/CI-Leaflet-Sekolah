@@ -26,7 +26,9 @@
                         <th scope="col">No.</th>
                         <th scope="col">Nama Sekolah</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Akreditasi</th>
                         <th scope="col">Alamat</th>
+                        <th scope="col">No. Telepon</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -37,7 +39,9 @@
                             <td align="center"><?= $i++; ?></th>
                             <td><?= $s['nama']; ?></td>
                             <td align='center'><?= $s['status']; ?></td>
+                            <td align='center'><?= $s['akreditasi']; ?></td>
                             <td><?= $s['alamat']; ?></td>
+                            <td align='right'><?= $s['nohp']; ?></td>
                             <td align="center">
                                 
                                 <a href="/sekolah/<?= $s['slug']; ?>" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>

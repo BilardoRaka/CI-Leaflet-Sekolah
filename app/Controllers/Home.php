@@ -28,9 +28,12 @@ class Home extends BaseController
     public function map()
     {
         $sekolah = $this->SekolahModel->findAll();
+        $kecamatan = array_unique($this->SekolahModel->findColumn('kecamatan'));
+
         $data = [
             'title' => 'Pemetaan',
-            'sekolah' => $sekolah
+            'sekolah' => $sekolah,
+            'kecamatan' => $kecamatan
         ];
 
         return view('map', $data);
