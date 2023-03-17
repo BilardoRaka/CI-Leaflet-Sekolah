@@ -5,18 +5,21 @@ namespace App\Controllers;
 use App\Models\SekolahModel;
 use App\Models\UserModel;
 use App\Models\GaleriModel;
+use App\Models\JurusanModel;
 
 class SekolahController extends BaseController
 {
     protected $SekolahModel;
-    protected $UserModel;
     protected $GaleriModel;
+    protected $UserModel;
+    protected $JurusanModel;
 
     public function __construct()
     {
         $this->SekolahModel = new SekolahModel();
         $this->UserModel = new UserModel();
         $this->GaleriModel = new GaleriModel();
+        $this->JurusanModel = new JurusanModel();
     }
 
     public function index()
@@ -49,11 +52,13 @@ class SekolahController extends BaseController
         } else {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Sekolah Tidak Ditemukan.');
         }
+        $jurusan = $this->JurusanModel->where('sekolah_id', $sekolah['id'])->findAll();
 
         $data = [
             'title' => 'Detail Sekolah',
             'sekolah' => $sekolah,
-            'galeris' => $galeri
+            'galeris' => $galeri,
+            'jurusans' => $jurusan
         ];
 
         if (empty($data['sekolah'])) {
@@ -77,12 +82,14 @@ class SekolahController extends BaseController
     {
         $sekolah = $this->SekolahModel->where('user_id', session('id'))->first();
         $galeri = $this->GaleriModel->where('sekolah_id', $sekolah['id'])->findAll();
+        $jurusan = $this->JurusanModel->where('sekolah_id', $sekolah['id'])->findAll();
+
 
         $data = [
             'title' => 'Profil Sekolah',
             'sekolah' => $sekolah,
-            'galeris' => $galeri
-
+            'galeris' => $galeri,
+            'jurusans' => $jurusan
         ];
 
         return view('profil', $data);
@@ -92,11 +99,13 @@ class SekolahController extends BaseController
     {
         $sekolah = $this->SekolahModel->where('user_id', session('id'))->first();
         $galeris = $this->GaleriModel->where('sekolah_id', $sekolah['id'])->findAll();
+        $jurusan = $this->JurusanModel->where('sekolah_id', $sekolah['id'])->findAll();
 
         $data = [
             'title' => 'Ubah Profil',
             'sekolah' => $sekolah,
             'galeris' => $galeris,
+            'jurusans' => $jurusan,
             'validation' => \Config\Services::validation(),
         ];
 
@@ -105,7 +114,8 @@ class SekolahController extends BaseController
 
     public function updateprofil($id)
     {
-
+        // $nama_jurusan = $this->request->getVar('nama_jurusan');
+        // dd($nama_jurusan);
         $sekolahLama = $this->SekolahModel->getSekolah($this->request->getVar('slug'));
         if ($sekolahLama['nama'] == $this->request->getVar('nama')) {
             $rule_nama = 'required';
@@ -280,6 +290,21 @@ class SekolahController extends BaseController
                 $this->GaleriModel->save([
                     'sekolah_id' => $sekolah['id'],
                     'image' => $newName
+                ]);
+            }
+        }
+
+        $jurusans = $this->JurusanModel->where('sekolah_id', $sekolah['id'])->findAll();
+        foreach($jurusans as $jurusan){
+            $this->JurusanModel->delete($jurusan['id']);
+        }
+
+        $nama_jurusan = $this->request->getVar('nama_jurusan');
+        if(!$nama_jurusan == null) {
+            for ($i=0; $i < count($nama_jurusan); $i++) { 
+                $this->JurusanModel->save([
+                    'sekolah_id' => $id,
+                    'nama_jurusan' => $nama_jurusan[$i],
                 ]);
             }
         }

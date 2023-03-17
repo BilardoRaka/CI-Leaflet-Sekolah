@@ -50,12 +50,21 @@
                             No. Telepon     :<br><?= $sekolah['nohp']; ?>
                         </p>
                     </div>
-                    <div class="card bg-light">
+                    <div class="card bg-light mb-3">
                         <p class="h5 card-header">Data Penyelenggaraan</p>
                         <p class="card-body">
                             Akreditasi      :<br><?= $sekolah['akreditasi'] ?><br>
                             Kurikulum       :<br><?= $sekolah['kurikulum']; ?><br>
                             Penyelenggaraan :<br><?= $sekolah['penyelenggaraan']; ?><br>
+                        </p>
+                    </div>
+                    <div class="card bg-light mb-3">
+                        <p class="h5 card-header">Data Jurusan</p>
+                        <p class="card-body">
+                            <?php $i = 1; ?>
+                            <?php foreach ($jurusans as $jurusan) : ?>
+                                <?= $i++ ?>. <?= $jurusan['nama_jurusan'] ?><br>
+                            <?php endforeach;?>
                         </p>
                     </div>
                 </div>
@@ -76,13 +85,13 @@
                             Jumlah Perpustakaan :<br><?= $sekolah['perpustakaan']; ?><br>
                         </p>
                     </div>
-                    <a href="/sekolah" class="btn btn-md bg-primary text-white mt-3">Kembali ke Menu Sekolah</a>
                 </div>
                 <div class="col-4">
                     <div class="card bg-light">
                     <p class="h5 card-header">Lokasi Geografis Sekolah</p>
                         <div id="map" class="mt-3" style="width: 100%;height: 59vh;"></div>
                     </div>
+                    <a href="/sekolah" class="btn btn-md bg-primary text-white mt-3">Kembali ke Menu Sekolah</a>
                 </div>
             </div>
         </div>

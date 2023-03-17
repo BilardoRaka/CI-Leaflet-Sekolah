@@ -50,12 +50,21 @@
                             No. Telepon     :<br><?= $sekolah['nohp']; ?>
                         </p>
                     </div>
-                    <div class="card bg-light">
+                    <div class="card bg-light mb-3">
                         <p class="h5 card-header">Data Penyelenggaraan</p>
                         <p class="card-body">
                             Akreditasi      :<br><?= $sekolah['akreditasi'] ?><br>
                             Kurikulum       :<br><?= $sekolah['kurikulum']; ?><br>
                             Penyelenggaraan :<br><?= $sekolah['penyelenggaraan']; ?><br>
+                        </p>
+                    </div>
+                    <div class="card bg-light mb-3">
+                        <p class="h5 card-header">Data Jurusan</p>
+                        <p class="card-body">
+                            <?php $i = 1; ?>
+                            <?php foreach ($jurusans as $jurusan) : ?>
+                                <?= $i++ ?>. <?= $jurusan['nama_jurusan'] ?><br>
+                            <?php endforeach;?>
                         </p>
                     </div>
                 </div>

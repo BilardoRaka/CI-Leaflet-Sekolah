@@ -138,25 +138,34 @@
                 </div>
             </div>
             <div class="card bg-light mb-3">
-                <p class="h5 card-header">Lokasi Geografis Sekolah</p>
+                <p class="h5 card-header">Data Jurusan</p>
                 <div class="card-body">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-12">
-                            Tekan Lokasi Sekolah pada Peta Tersedia
-                            <div id="map" style="width: 100%;height: 60vh;"></div>
-                        </div>
-                        <p class="text-danger small">
-                            <?= $validation->getError('latitude'); ?>
-                        </p>
+                    <div class="form-group col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 child-repeater-table">
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center; margin: auto;">Nama Jurusan</th>
+                                    <th style="text-align:center; margin: auto;"><a href="javascript:void(0)" class="badge bg-success addRow">+</a></th>
+                                </tr>
+                            </thead>
+                            <?php $i=1; ?>
+                            <tbody>
+                                <?php foreach ($jurusans as $jurusan) : ?>
+                                <tr>
+                                    <td><input type="text" id="nama_jurusan[]" name="nama_jurusan[]" class="form-control css" value="<?= $jurusan['nama_jurusan'] ?>" required></td>
+                                    <?php $index = $i++ ?>
+                                    <?php if($index == 1){ ?>
+                                        <td></td>
+                                    <?php } else { ?>
+                                        <td align='center'><a href='javascript:void(0)' class='badge bg-danger deleteRow'>-</a></td>     
+                                    <?php } ?>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Perbarui Profil</button>
-                <a href="/profil" class="btn btn-danger">Kembali ke Menu Profil</a>
-            </div>
-        </div>
-        <div class="col-6">
             <div class="card bg-light mb-3">
                 <p class="h5 card-header">Data Personil</p>
                 <div class="card-body">
@@ -195,6 +204,13 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Perbarui Profil</button>
+                <a href="/profil" class="btn btn-danger">Kembali ke Menu Profil</a>
+            </div>
+        </div>
+        <div class="col-6">
+
             <div class="card bg-light mb-3">
                 <p class="h5 card-header">Data Fasilitas</p>
                 <div class="card-body">
@@ -234,6 +250,20 @@
                 </div>
             </div>
             <div class="card bg-light mb-3">
+                <p class="h5 card-header">Lokasi Geografis Sekolah</p>
+                <div class="card-body">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-12">
+                            Tekan Lokasi Sekolah pada Peta Tersedia
+                            <div id="map" style="width: 100%;height: 60vh;"></div>
+                        </div>
+                        <p class="text-danger small">
+                            <?= $validation->getError('latitude'); ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-light mb-3">
                 <p class="h5 card-header">Data Galeri Sekolah</p>
                 <div class="card-body">
                     <div class="row g-3 align-items-center mb-3">
@@ -266,12 +296,22 @@
                 </div>
             </div>
         </div>
-        
     </div>
 </div>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
     
+    $('thead').on('click', '.addRow', function(){
+        var tr = "<tr>"+
+                    "<td><input type='text' id='nama_jurusan[]' name='nama_jurusan[]' class='form-control css' required></td>"+
+                    "<td align='center'><a href='javascript:void(0)' class='badge bg-danger deleteRow'>-</a></td>"+
+                "</tr>"
+        $('tbody').append(tr);
+    });
+    $('tbody').on('click', '.deleteRow', function(){
+        $(this).parent().parent().remove();
+    });
+
     var southWest = L.latLng(-6.726921172, 108.3626442),
 northEast = L.latLng(-7.206124262731635, 108.7958942);
     var bounds = L.latLngBounds(southWest, northEast);
@@ -307,6 +347,7 @@ northEast = L.latLng(-7.206124262731635, 108.7958942);
     L.geoJSON(myLines, {
         style: myStyle
     }).addTo(map_init);
+
 </script>
 
 <?= $this->endSection(); ?>
